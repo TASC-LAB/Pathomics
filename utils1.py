@@ -28,7 +28,11 @@ import statsmodels.api as sm
 # 
 from sklearn.preprocessing import LabelEncoder
 from datetime import datetime
-
+import tkinter as tk
+from tkinter import filedialog
+from pandas import DataFrame
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 # In[5]:
 
@@ -50,7 +54,7 @@ import pathlib
 from statsmodels.formula.api import ols
 import statsmodels.api as sm
 from scipy.stats import *
-
+folder = '/Users/jacob/Desktop/Python_GUI/input_data'#here put in path of intermediate folder
 # In[6]:
 Groups = 'Line'
 
@@ -85,7 +89,7 @@ def ANOVE_DESC_TABLE(dataSpecGraphGroups, Features, title, dep='Groups',groupLis
         ANOVA_Desc_df.loc[par,'Groups'] = gb_Groups.values.ravel()
     display(ANOVA_Desc_df)
     ANOVA_Desc_df.to_csv(title+' ANOVA + Descriptive Table - ' +dep +'.csv')
-    return None
+    return ANOVA_Desc_df
 
 
 
@@ -517,8 +521,8 @@ def histogramDataKDELabels(Labels,data,Features,FigureNumber,Par='Experiment',nC
     # fig.tight_layout(pad=1.05)
     fig2.legend(handles, labels, loc='upper right',fontsize='xx-large',framealpha=1,edgecolor='black')
     # plt.subplots_adjust(right=0.8)
-    plt.show()
-    return None
+
+    return fig2,fig
 
 
 # In[10]:
@@ -535,6 +539,7 @@ def zScoreEach(data):
 
 #Function dealing with column headings
 def to_groups(df):
+    df=pd.DataFrame(df)
     df["Groups"]=0
     headings= df.columns.tolist()
     for t in range(len(headings)):
@@ -555,7 +560,7 @@ def to_groups(df):
         t+=1
     df.columns=headings
 
-    for i in range(len(data2)):
+    for i in range(len(df)):
         if df["Group A"][i]==1:
             df["Groups"][i]= 'A'
         if df["Group B"][i]==1:
@@ -564,5 +569,20 @@ def to_groups(df):
             df["Groups"][i]= 'C'
         i+=1
     return(df)
-
-
+def cox(data_cox):
+    for i in range(len(data_cox)):
+        if data_cox['Groups'][i]== 'A':
+            data_cox['Groups'][i]= 1
+        if data_cox['Groups'][i]== 'B':
+            data_cox['Groups'][i]= 2
+        if data_cox['Groups'][i]== 'C':
+            data_cox['Groups'][i]= 3
+        if data_cox['Groups'][i]== 'Ignore':
+            data_cox['Groups'][i]= 0
+        #if data_cox['Groups'][i]== 'D':
+            #data_cox['Groups'][i]= 4
+        #if data_cox['Groups'][i]== 'E':
+            #data_cox['Groups'][i]= 5
+        #if data_cox['Groups'][i]== 'F':
+            #data_cox['Groups'][i]= 6
+         # One may add these in dependednt on the optimal ammount of clusters
