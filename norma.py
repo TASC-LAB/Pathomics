@@ -11,7 +11,6 @@ import cv2
 import glob
 from skimage import exposure
 from skimage.exposure import match_histograms
-import cv2
 
 
 def normalization(main_image, target):
