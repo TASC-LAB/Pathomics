@@ -1,0 +1,23 @@
+{
+    "detectionImageBrightfield":"Hematoxylin OD",
+    "requestedPixelSizeMicrons":0.5,
+    "backgroundRadiusMicrons":4.0,
+    "backgroundByReconstruction":true,
+    "medianRadiusMicrons":0.0,
+    "sigmaMicrons":1.5,
+    "minAreaMicrons":10.0,
+    "maxAreaMicrons":80.0,
+    "threshold":0.1,
+    "maxBackground":2.0,
+    "watershedPostProcess":true,
+    "cellExpansionMicrons":5.0,
+    "includeNuclei":true,
+    "smoothBoundaries":true,
+    "makeMeasurements":true,
+
+    "backgroundRadiusPixel":8.0,
+    "cellExpansionPixel":10.0,
+    "medianRadiusPixel":0.0,
+    "minAreaPixel":20.0,
+    "maxAreaPixel":160.0
+}

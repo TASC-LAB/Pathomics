@@ -1,0 +1,13 @@
+Pathomics:
+1. Choose Dataset (Local->MongoDB)
+2. Normalize (Local->Train)
+3. ROI (Classical->AI)
+4. QuPath (outside->automated)
+5. Train
+6. Results
+7. Optimize Param QuPath
+
+Code generalization:
+1. Add ROI ML
+2. Generalize os into Pathlib
+3. Add features
